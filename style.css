@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@300;800&family=Poppins:wght@600&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  background: #222;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+}
+
+.card{
+  font-family: 'Anton', sans-serif;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  width: 80vw;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+}
+.card > h3 {
+  padding-left: 35px;
+  font-size: 58px;
+  color: #eee;
+  letter-spacing: 3px;
+}
+.card > span {
+  display: block;
+  height: 1px;
+  background: #eee;
+  margin: 0 15px;
+}
+.card > p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  font-size: 1.8rem;
+  font-weight: 200;
+  font-size: 32px;
+  color: #eee;
+  font-family: 'Open Sans', sans-serif;
+  margin-right: 80px;
+  font-weight: bold ;
+}
+.card > p > span {
+    font-weight: bold;
+    padding-left: 4px;
+}
+
+section#up_file {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 2px #212121;
+  width: 85%;
+  margin: 0 auto;
+}
+.top > .subcard_file {
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.top div.subcard_file > button {
+  width: 167px;
+  height: 49px;
+  background-color: #01FF85;
+  font-size: 14px;
+  color: #050a30;
+  margin-right: 29px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+/*. Tabela Itens*/
+section#table_itens {
+  border-radius: 3px;
+  box-shadow: 0 0 2px #212121;
+  width: 85%;
+  height: -webkit-fill-available;
+  overflow-y: auto;
+  padding: 5px;
+  margin: 10px auto 100px;
+  border: 1px solid #eee;
+  padding: 10px 52px;
+  border-radius: 30px;
+}
+select.acoes {
+  text-align: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  /* Ocultar a seta do elemento select usando pseudo-elemento */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+#itensCompras > tbody > tr > td:nth-child(3) > select {
+  color: #01FF85;
+  font-size: 20px;
+}
+#itensCompras {
+  width: -webkit-fill-available;
+  color: #eee;
+}
+#itensCompras tr {
+  border: 0;
+  height: 40px;
+  font-family: 'Open Sans', sans-serif;
+}
+#itensCompras td:not(:first-child) {
+  text-align: center;
+}
+#itensCompras td > select:first-child {
+  background: none;
+  color: #eee;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.table-header {
+  border-bottom: 1px solid white; /* Adicione a borda com a cor e tamanho desejados */
+  margin-bottom: 10px;
+}
+
+
+@media (max-width: 600px) {
+  main {
+  background: #222;
+  width: 100vw;
+  height: calc(100vh - 55px);
+  display: grid;
+}
+.card > h3 {
+  padding-left: 0;
+}
+  section#table_itens {
+    padding: 0;
+    width: 95%;
+    margin-bottom: 20px;
+  }
+  #itensCompras {
+    width: 100%;
+  }
+}
