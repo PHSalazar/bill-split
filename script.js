@@ -732,7 +732,7 @@ function cobrarParaImage(user, itens, parentVenc) {
     // Crie um objeto de imagem
     var imagem = new Image();
     // Defina a origem da imagem (substitua pelo caminho correto da imagem)
-    imagem.src = './template.jpg';
+    imagem.src = '../template.jpg';
     document.body.appendChild(imagem);
     console.log(imagem);
     
