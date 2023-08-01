@@ -3,6 +3,9 @@ var fullText = ''; //Fatura completa
 var total = 0.00;
 var repetirClone = 0;
 
+
+
+
 function extractTextFromPage() {
     var fileInput = document.getElementById('pdf-file');
     var file = fileInput.files[0];
@@ -24,6 +27,10 @@ function extractTextFromPage() {
 
                     // Verificar se o texto 'nu pagamentos s.a' está presente
                     if (firstPageText.toLowerCase().includes('nu pagamentos s.a')) {
+                        // Obter vencimento
+                        var regexVencimento = /(?<=FATURA \d{2} ).*?(?= \d{4})/gi;
+                        var venc = regexVencimento.exec(firstPageText)[0];
+
                       // Obter total         
                         var regexTotal = /(?<=Total a pagar R.).*?,\d{2}/gi;
                         var valor = regexTotal.exec(firstPageText)[0];
@@ -63,7 +70,7 @@ function extractTextFromPage() {
                                 // Retornar todos os itens concatenados
                                 fullText = text;
 
-                                createTable(result, '05');
+                                createTable(result, '05/' + venc);
                                 return;
                             }
 
@@ -190,7 +197,7 @@ thead.classList.add('table-header');
 var headerRow = thead.insertRow();
 
 // Células do cabeçalho
-var headerTexts = ['Item', 'Seleção', 'Ações'];
+var headerTexts = ['Item', 'Usuário', 'Ações'];
 
 headerTexts.forEach(function(text) {
     var headerCell = document.createElement('th');
@@ -733,11 +740,9 @@ function cobrarParaImage(user, itens, parentVenc) {
     var imagem = new Image();
     // Defina a origem da imagem (substitua pelo caminho correto da imagem)
     imagem.src = './template.jpg';
-    document.body.appendChild(imagem);
-    console.log(imagem);
     
     // Defina o callback de carregamento da imagem
-    // imagem.onload = function() {
+    imagem.onload = function() {
       console.log('imagem carregada');
 
       // Defina o background do canvas
@@ -757,13 +762,8 @@ function cobrarParaImage(user, itens, parentVenc) {
       ctx.font = '16px Roboto';
       ctx.fillStyle = 'white';
 
-      // Obtenha o mês atual
-      var dataAtual = new Date();
-      var mesAtual = dataAtual.getMonth() + 1; // +1 porque os meses em JavaScript começam em 0 (janeiro)
-      var mesAtualFormatado = mesAtual < 10 ? '0' + mesAtual : mesAtual;
-
       // Formate a data no formato desejado (05/{mês atual})
-      var vencimento = 'Vencimento: ' + parentVenc + '/' + mesAtualFormatado;
+      var vencimento = 'Vencimento: ' + parentVenc;
 
       // Posicione o vencimento na posição (100, 90)
       ctx.fillText(vencimento, 100, 90);
@@ -818,7 +818,7 @@ function cobrarParaImage(user, itens, parentVenc) {
       // Salve a imagem
       var link = document.createElement('a');
       link.href = imagemDataUrl;
-      link.download = `fatura_${parentVenc}_${mesAtualFormatado}_${user}.jpg`;
+      link.download = `fatura_${parentVenc.replaceAll('/',"_")}_${user}.jpg`;
       link.click();
       link.style.color = 'red';
       link.textContent = 'Download';
@@ -826,10 +826,6 @@ function cobrarParaImage(user, itens, parentVenc) {
       document.body.appendChild(link);
       console.log('criado');
 
-    //};
+    };
 
-
-
-
-      
 }
