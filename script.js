@@ -55,6 +55,8 @@ function extractTextFromPage() {
                                 regexEmissao = /.{14}EMISS.O.*\$/gi;
                                 text = text.replace(regexEmissao, '');
 
+                                console.log(text);
+                                
                                 var regex = /(\d{2}\s[A-Za-z]{3})\s(.+?)\s(\d+,\d{2})/g;
                                 var matches;
                                 var result = '';

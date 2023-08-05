@@ -1,53 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Separador de Faturas</title>
-  
-   <script src="pdf.min.js"></script>
-    <script src="pdf.worker.min.js"></script>
-    <script>
-        function simulateClick() {
-            document.getElementById('pdf-file').click();
-        }
-    </script>
-  
-  <!-- HTML -->
-
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Separador de Faturas</title>
 </head>
-
 <body>
-  <canvas id="canvas" style="display: none;"></canvas>
-  
+    <header>
+        <nav id="nav">
+            <div>LOGO</div>
+            <div class="center">
+                <h2>PEDRO HENRIQUE DE SOUZA SALAZAR</h2>
+                <p>Separando faturas</p>
+            </div>
+            <div class="menu_items">
+                <label for="menu_label">
+                    <span class="trace"></span>
+                    <span class="trace"></span>
+                    <span class="trace"></span>
+                </label>
+                <input type="checkbox" name="menu" id="menu_label" style="display: none;">
+                <ul id="menu">
+                    <li>Home</li>
+                    <li>Settings</li>
+                    <li>Logout</li>
+                </ul>
 
-
-  <main>
-    <div class="top">
-      <section id="cards">
-        <article class="card">
-          <h3>TOTAL</h3>
-          <span></span>
-          <p>R$ <span id="total">0</span></p>
-        </article>
-      </section>
-      
-      <div class="subcard_file">
-        <input type="file" name="upload_bill" id="pdf-file" style="display: none" accept=".pdf" onchange="extractTextFromPage()">
-        <button type="submit" onclick="simulateClick()">Upload</button>
-
-     </div>
-    </div>
-    
-    <section id="table_itens">
-    </section>
-  </main>
-  
-  <!-- Project -->
-  <script src="script.js"></script>
-  <!-- <script src="main.js"></script> -->
+                
+            </div>
+        </nav>
+    </header>
 </body>
 </html>
