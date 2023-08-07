@@ -152,7 +152,8 @@ section.card p.card-post-item > .card-post-button {
   float: right;
   cursor: pointer;
 }
-section.card button:active {
+section.card button:active,
+section.card button:hover {
   background: #006384;
 }
 
@@ -185,6 +186,21 @@ section.card button:active {
   
 }
 
+#loadBill {
+  background: linear-gradient(180deg, #00384A, #022834);
+  opacity: 1;
+  padding: 20px;
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+#loadBill:active {
+  background: #006384;
+}
 
 /***********/
 /* Mobile */
@@ -200,26 +216,45 @@ section.card button:active {
 padding-top: 20px;
   }
    section {
-width: 80vw;
+    width: 80vw;
   }
   
   /* Carregar Fatura */
 #loadBill {
-  background: linear-gradient(180deg, #00384A, #022834);
-  opacity: 1;
-  padding: 20px;
-  width: 110%;
-  margin: 0 auto;
-  color: #fff;
-  border: none;
-  outline: none;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  position: fixed;
-  bottom: 0;
-}
-#loadBill:active {
-  background: #006384;
+    position: fixed;
+    bottom: 0;
 }
 
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  section.card,
+  #fatura-itens {
+  min-height: 250px;
+  }
+  section.card:first-child {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  section.card:nth-child(2) {
+    grid-area: 1 / 2 / 1 / 3;
+  }
+  #fatura-itens {
+    grid-area: 2 / 1 / 3 / 3;
+    margin: 0 auto;
+  }
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 80vw;
+    margin: 0 auto
+  }
+  #loadBill {
+    position: fixed;
+    bottom: 0;
+  }
+  
 }
