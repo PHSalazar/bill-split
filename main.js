@@ -144,7 +144,12 @@ function extractTextFromPage() {
                                 var firstPageText = firstPageTextContent.items.map(item => item.str).join('');
                                 // Verificar se o texto 'nu pagamentos s.a' está presente
                                 if (firstPageText.toLowerCase().includes('banco santander (brasil) s.a')) {
-                                    console.log(firstPageText);
+                                    // Obter vencimento
+                                    var regexVencimento = /(?<=Vencimento[0-9]{2}\/)[0-9]{2}\/[0-9]{4}/gi;
+                                    var venc = regexVencimento.exec(firstPageText)[0];
+                                    var vencElement = document.getElementById('vencimento');
+                                    vencElement.textContent = venc;
+
                                     // Obter total         
                                     var regexTotal = /(?<=Total a pagarR.).*?,\d{2}/gi;
                                     var valor = regexTotal.exec(firstPageText);
