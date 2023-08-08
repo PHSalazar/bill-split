@@ -1,10 +1,14 @@
 function addUserIn(user) {
   var eleParent = document.getElementById('relatorio');
   
+  // Verificar se o usuário já está no relatório
+  
+  if (!document.getElementById('relatorio_'+user.toLowerCase())) {
   // Criar elemento para usuário
   elementP = document.createElement('p');
   elementP.classList.add('card-post-item');
   elementP.textContent = user.toLowerCase();
+  elementP.setAttribute('id', 'relatorio_'+user.toLowerCase());
   
   // Criar notai para visualizar ou gerar relatório
   elementButton = document.createElement('button');
@@ -16,12 +20,15 @@ function addUserIn(user) {
   
   // Adicionar usuário ao documento
   eleParent.appendChild(elementP);
+  }else{
+   // Usuário já está no relatório
+  }
 }
-
+/*
 addUserIn('Pedro');
 addUserIn('Milena');
 addUserIn('Guilherme');
-
+*/
 
 
 // Ler Arquivo em PDF
@@ -339,6 +346,7 @@ selectElements.forEach(function(selectElement) {
         event.target.classList.add('default');
       }else{
         event.target.classList.remove('default');
+        addUserIn(selectedValue); // Adicionar usuário ao relatório
       }
     });
 });
