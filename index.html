@@ -36,9 +36,10 @@
     <main>
       <section class="card">
         <h2>Resumo da Fatura</h2>
-        <p>
-          <p>lorem ipsum</p>
-        </p>
+        <div>
+          <h1 id="total" class="label-info">Nenhuma fatura carregada.</h1>
+          <h4 id="vencimento" class="label-info">Nenhuma fatura carregada.</h2>
+        </div>
       </section>
      <section class="card" id="relatorio">
        <h2>Relatórios de Cobrança</h2>
@@ -48,10 +49,10 @@
      
      <table id="fatura-itens">
        <thead>
-         <td colspan="2">Item</td>
-         <td colspan="1">Usuário</td>
+         <td>Item</td>
+         <td>Usuário</td>
        </thead>
-       <tbody>
+       <tbody id="tbody-itens">
          <td class="no-item-loaded" colspan="3">
            Sem itens carregados.
          </td>
@@ -63,7 +64,8 @@
             <input type="file" id="file-pdf" accept=".pdf" style="display: none">
             <button id="loadBill">Carregar Fatura</button>
     </footer>
-    
+    <script src="pdf.min.js"></script>
+    <script src="pdf.worker.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
