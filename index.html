@@ -46,24 +46,25 @@
          
      </section>
      
-     
-     <table id="fatura-itens">
-       <thead>
-         <td>Item</td>
-         <td>Usuário</td>
-       </thead>
-       <tbody id="tbody-itens">
-         <td class="no-item-loaded" colspan="3">
-           Sem itens carregados.
-         </td>
-       </tbody>
-     </table>
+      <table id="fatura-itens">
+        <thead>
+          <td>Item</td>
+          <td>Usuário</td>
+        </thead>
+        <tbody id="tbody-itens">
+          <td class="no-item-loaded" colspan="3">
+            Sem itens carregados.
+          </td>
+        </tbody>
+      </table>
     </main>
     
     <footer>
             <input type="file" id="file-pdf" accept=".pdf" style="display: none">
-            <button id="loadBill">Carregar Fatura</button>
     </footer>
+    <button id="loadBill">Carregar Fatura</button>
+
+    <canvas id="canvas" style="display: none;"></canvas>
     <script src="pdf.min.js"></script>
     <script src="pdf.worker.min.js"></script>
     <script src="main.js"></script>

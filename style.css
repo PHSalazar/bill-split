@@ -289,15 +289,14 @@ padding-top: 20px;
   main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 300px 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     width: 80vw;
     margin: 0 auto;
-    max-height: 100vh;
   }
   #loadBill {
-    position: fixed;
+    position: sticky;
     bottom: 0;
   }
   

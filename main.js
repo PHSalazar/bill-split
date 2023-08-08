@@ -14,6 +14,9 @@ function addUserIn(user) {
   elementButton = document.createElement('button');
   elementButton.classList.add('card-post-button');
   elementButton.textContent = 'Gerar';
+  elementButton.addEventListener('click', () => {
+    cobrarParaImage(user, document.querySelectorAll(`*[user=${user}]`), document.getElementById('vencimento').textContent);
+  });
   
   // Adicionar botão ao elemento criado
   elementP.appendChild(elementButton);
@@ -88,15 +91,12 @@ function extractTextFromPage() {
                             // Verificar se a página está dentro do intervalo
                             if (pageNumber > pdf.numPages) {
                                 // Todas as páginas foram processadas, exibir o texto no console
-                                // console.log(text);
                                 // Aplicar expressão regular para remover a parte específica do texto
                                 var regexPagamento = /.{8}Pagamento em.*?,\d{2}  /gi;
                                 text = text.replace(regexPagamento, '');
                                 regexEmissao = /.{14}EMISS.O.*\$/gi;
                                 text = text.replace(regexEmissao, '');
 
-                                console.log(text);
-                                
                                 var regex = /(\d{2}\s[A-Za-z]{3})\s(.+?)\s(\d+,\d{2})/g;
                                 var matches;
                                 var result = '';
@@ -347,6 +347,7 @@ selectElements.forEach(function(selectElement) {
       }else{
         event.target.classList.remove('default');
         addUserIn(selectedValue); // Adicionar usuário ao relatório
+        event.target.parentNode.parentNode.querySelector('td').setAttribute('user', selectedValue); // Adicionando atributo
       }
     });
 });
@@ -373,8 +374,6 @@ function cobrarParaImage(user, itens, parentVenc) {
     
     // Defina o callback de carregamento da imagem
     imagem.onload = function() {
-      console.log('imagem carregada');
-
       // Defina o background do canvas
       var pattern = ctx.createPattern(imagem, 'repeat');
       ctx.fillStyle = pattern;
@@ -415,6 +414,8 @@ function cobrarParaImage(user, itens, parentVenc) {
 
       // Loop para desenhar cada item na tela
         itens.forEach(function(item) {
+        item = item.textContent;
+            console.log(item);
         // Fazer o split em cada item para obter a data, o item e o valor
         var partes = item.split(' ');
         var data = partes.slice(0, 2).join(' ');
